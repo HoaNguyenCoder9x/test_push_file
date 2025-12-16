@@ -26,6 +26,6 @@ jobs:
 
       - name: Execute script
         env:
-          PWD: ${{ secrets.PWD }}
+          USER_NAME: ${{ secrets.USER_NAME }}
         run: |
           python main.py
