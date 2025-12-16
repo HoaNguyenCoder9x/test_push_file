@@ -1,4 +1,4 @@
 import os
 
-PWD = os.getenv("PWD")
-print(PWD)
+USER_NAME = os.getenv("USER_NAME")
+print(USER_NAME)
