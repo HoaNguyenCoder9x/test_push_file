@@ -1,4 +1,4 @@
-name: Run job every 5 minutes
+name: Run job 5 minutes
 
 on:
   schedule:
