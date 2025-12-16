@@ -3,5 +3,5 @@ import datetime
 def get_current_dt():
   return datetime.datime.now()
   
-get_current_dt()
+print(get_current_dt())
   
