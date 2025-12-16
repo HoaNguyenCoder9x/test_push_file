@@ -1,0 +1,50 @@
+name: Manual Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Target environment"
+        required: true
+        default: "dev1"
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+      start_date:
+        description: "Start date (YYYY-MM-DD)"
+        required: true
+        type: string
+      end_date:
+        description: "End date (YYYY-MM-DD)"
+        required: true
+        type: string
+      dry_run:
+        description: "Dry run?"
+        required: false
+        default: "false"
+        type: boolean
+
+jobs:
+  run-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Print input values
+        run: |
+          echo "ENV=${{ inputs.env }}"
+          echo "START_DATE=${{ inputs.start_date }}"
+          echo "END_DATE=${{ inputs.end_date }}"
+          echo "DRY_RUN=${{ inputs.dry_run }}"
+
+      - name: Run script with inputs
+        run: |
+          python main.py \
+            --env "${{ inputs.env }}" \
+            --start-date "${{ inputs.start_date }}" \
+            --end-date "${{ inputs.end_date }}" \
+            --dry-run "${{ inputs.dry_run }}"
