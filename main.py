@@ -1,7 +1,4 @@
-import datetime
+import os
 
-def get_current_dt():
-  return datetime.datime.now()
-  
-print(get_current_dt())
-  
+PWD = os.getenv("PWD")
+print(PWD)
